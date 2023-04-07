@@ -39,4 +39,29 @@ $(document).ready(function () {
   mWin.hide();
 
   // 탭메뉴
+  const tabMenuBts = $(".tabMenu a");
+  const tabBoxs = $(".tabBox");
+
+  // 클릭 기능
+  // tabMenuBts[0].click();
+  // tabMenuBts[1].click();
+  // tabMenuBts[2].click();
+  // tabMenuBts[3].click();
+
+  // tabMenuBts.forEach(function(item, index) {})
+  $.each(tabMenuBts, function (index, item) {
+    $(item).click(function (e) {
+      // a 태그 href 막기
+      e.preventDefault();
+      // 일단 탭내용들은 모두 class 는 제거
+      tabBoxs.removeClass("tabFocus");
+      // index 에 해당하는 탭내용만 class 추가
+      // 오류: tabBoxs[index].show();
+      tabBoxs.eq(index).addClass("tabFocus");
+      // 일단 모든 탭메뉴의 class 는 제거
+      tabMenuBts.removeClass("tabFocus");
+      // 클릭된 a 태그만 class 추가
+      tabMenuBts.eq(index).addClass("tabFocus");
+    });
+  });
 });
